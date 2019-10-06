@@ -26,11 +26,14 @@ const (
 )
 
 type UI struct {
-	Current       Panel
-	Printer       *octoprint.Client
-	State         octoprint.ConnectionState
+	Current Panel
+	Printer *octoprint.Client
+	State   octoprint.ConnectionState
+	UIState string
+
 	Notifications *Notifications
 
+	s *SplashPanel
 	b *BackgroundTask
 	g *gtk.Grid
 	o *gtk.Overlay
@@ -69,6 +72,7 @@ func New(endpoint, key string, width, height int) *UI {
 		ui.scaleFactor = 1
 	}
 
+	ui.s = NewSplashPanel(ui)
 	ui.b = NewBackgroundTask(time.Second*5, ui.verifyConnection)
 	ui.initialize()
 	return ui
@@ -109,53 +113,60 @@ func (ui *UI) loadStyle() {
 	gtk.AddProviderForScreen(s, p, gtk.STYLE_PROVIDER_PRIORITY_USER)
 }
 
-var errMercyPeriod = time.Second * 30
+var errMercyPeriod = time.Second * 10
 
 func (ui *UI) verifyConnection() {
-	splash := NewSplashPanel(ui)
-
-	s, err := (&octoprint.ConnectionRequest{}).Do(ui.Printer)
-	if err != nil {
-		ui.Add(splash)
-		if time.Since(ui.t) > errMercyPeriod {
-			splash.Label.SetText(ui.errToUser(err))
-		}
-
-		// It's not an error since, error is being displayed already on the panel.
-		Logger.Debugf("Unexpected error: %s", err)
-		return
-	}
 
 	ui.sdNotify("WATCHDOG=1")
 
-	defer func() { ui.State = s.Current.State }()
+	newUiState := "splash"
+	splashMessage := "Initializing printer..."
 
-	switch {
-	case s.Current.State.IsOperational():
-		if !ui.State.IsOperational() && !ui.State.IsPrinting() {
-			Logger.Info("Printer is ready")
-			ui.Add(IdleStatusPanel(ui))
+	s, err := (&octoprint.ConnectionRequest{}).Do(ui.Printer)
+	if err == nil {
+		ui.State = s.Current.State
+		switch {
+		case s.Current.State.IsOperational():
+			newUiState = "idle"
+		case s.Current.State.IsPrinting():
+			newUiState = "printing"
+		case s.Current.State.IsError():
+			fallthrough
+		case s.Current.State.IsOffline():
+			if err := (&octoprint.ConnectRequest{}).Do(ui.Printer); err != nil {
+				newUiState = "splash"
+				splashMessage = fmt.Sprintf("Error connecting to printer: %s", err)
+			}
+		case s.Current.State.IsConnecting():
+			splashMessage = string(s.Current.State)
 		}
-		return
-	case s.Current.State.IsPrinting():
-		if !ui.State.IsPrinting() {
-			Logger.Info("Printing a job")
-			ui.Add(PrintStatusPanel(ui))
+	} else {
+		if time.Since(ui.t) > errMercyPeriod {
+			splashMessage = ui.errToUser(err)
 		}
-		return
-	case s.Current.State.IsError():
-		fallthrough
-	case s.Current.State.IsOffline():
-		Logger.Infof("Connection offline, connecting: %s", s.Current.State)
-		if err := (&octoprint.ConnectRequest{}).Do(ui.Printer); err != nil {
-			splash.Label.SetText(fmt.Sprintf("Error connecting to printer: %s", err))
-		}
-	case s.Current.State.IsConnecting():
-		Logger.Infof("Waiting for connection: %s", s.Current.State)
-		splash.Label.SetText(string(s.Current.State))
+
+		newUiState = "splash"
+		Logger.Debugf("Unexpected error: %s", err)
 	}
 
-	ui.Add(splash)
+	defer func() { ui.UIState = newUiState }()
+
+	ui.s.Label.SetText(splashMessage)
+
+	if newUiState == ui.UIState {
+		return
+	}
+
+	switch newUiState {
+	case "idle":
+		Logger.Info("Printer is ready")
+		ui.Add(IdleStatusPanel(ui))
+	case "printing":
+		Logger.Info("Printing a job")
+		ui.Add(PrintStatusPanel(ui))
+	case "splash":
+		ui.Add(ui.s)
+	}
 }
 
 func (ui *UI) sdNotify(m string) {
@@ -190,10 +201,9 @@ func (ui *UI) GoHistory() {
 func (ui *UI) errToUser(err error) string {
 	text := err.Error()
 	if strings.Contains(text, "connection refused") {
-		return fmt.Sprintf(
-			"Unable to connect to %q (Key: %v), \nmaybe OctoPrint not running?",
-			ui.Printer.Endpoint, ui.Printer.APIKey != "",
-		)
+		return "Unable to connect to OctoPrint, check if it running."
+	} else if strings.Contains(text, "request canceled") {
+		return "Loading..."
 	}
 
 	return fmt.Sprintf("Unexpected error: %s", err)

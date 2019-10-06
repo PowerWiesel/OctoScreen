@@ -43,7 +43,7 @@ If you are using `Raspbian` or any other `Debian` based distribution, required p
 be installed using:
 
 ```sh
-sudo apt-get install libgtk-3-0 xserver-xorg xinit X11-xserver-utils
+sudo apt-get install libgtk-3-0 xserver-xorg xinit x11-xserver-utils
 ```
 Also you may need to install video drive, usually **no screens found** error indicates this. Please find manual here:
 [https://github.com/ssvb/xf86-video-fbturbo/wiki/Installation](https://github.com/ssvb/xf86-video-fbturbo/wiki/Installation)
@@ -57,8 +57,8 @@ are available for Debian Stretch based distributions such as Raspbian and OctoPi
 
 For example for a Raspbian Stretch:
 ```sh
-wget https://github.com/Z-Bolt/OctoScreen/releases/download/v2.1.0/octoscreen_2.1-1_armhf.deb
-sudo dpkg -i octoscreen_2.1-1_armhf.deb
+wget https://github.com/Z-Bolt/OctoScreen/releases/download/v2.2.1/octoscreen_2.2-2_armhf.deb
+sudo dpkg -i octoscreen_2.2-2_armhf.deb
 ```
 
 ### Install from source

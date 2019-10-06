@@ -143,7 +143,7 @@ func (m *printStatusPanel) createStopButton() gtk.IWidget {
 }
 
 func (m *printStatusPanel) createMenuButton() gtk.IWidget {
-	m.menu = MustButtonImageStyle("Controle", "control.svg", "color3", func() {
+	m.menu = MustButtonImageStyle("Control", "control.svg", "color3", func() {
 		m.UI.Add(PrintMenuPanel(m.UI, m))
 	})
 	return m.menu
@@ -151,7 +151,20 @@ func (m *printStatusPanel) createMenuButton() gtk.IWidget {
 
 func (m *printStatusPanel) update() {
 	m.updateTemperature()
+	m.checkNotification()
 	m.updateJob()
+}
+
+func (m *printStatusPanel) checkNotification() {
+	n, err := (&octoprint.GetNotificationRequest{}).Do(m.UI.Printer)
+	if err != nil {
+		Logger.Error(err)
+		return
+	}
+
+	if n.Message != "" {
+		MessageDialog(m.UI.w, n.Message)
+	}
 }
 
 func (m *printStatusPanel) updateTemperature() {
@@ -213,7 +226,6 @@ func (m *printStatusPanel) doUpdateState(s *octoprint.PrinterState) {
 		m.menu.Hide()
 		m.back.Hide()
 		m.complete.Show()
-
 	default:
 		m.pause.SetSensitive(false)
 		m.stop.SetSensitive(false)
