@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="layer1_1_" sodipodi:docname="sd_eject.svg" inkscape:version="0.92.2 5c3e80d, 2017-08-06" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60.137px"
+	 height="60.777px" viewBox="0 0 60.137 60.777" enable-background="new 0 0 60.137 60.777" xml:space="preserve">
+<g id="layer2" transform="translate(-9.9771186,-13.402532)" inkscape:label="HeatBed" inkscape:groupmode="layer">
+	<g id="SD_Card" transform="matrix(0.7803205,0,0,0.7803205,9.3637737,9.3173446)">
+		
+			<path id="Outline" inkscape:connector-curvature="0" sodipodi:nodetypes="cccccccccc" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" d="
+			M27.877,14.23H39.32h11.444h11.442v60.127H16.434V59.324V44.293V29.261L27.877,14.23z"/>
+		<g id="Pins">
+			
+				<rect id="rect4378" x="29.107" y="22.242" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" width="2" height="11"/>
+			
+				<rect id="rect4378-7" x="37.063" y="22.297" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" width="2.001" height="11"/>
+			
+				<rect id="rect4378-8" x="45.465" y="22.129" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" width="2" height="11.001"/>
+			
+				<rect id="rect4378-76" x="53.76" y="22.103" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" width="2" height="11"/>
+		</g>
+	</g>
+	<g id="Eject_Symbol" transform="translate(-40.668816,10.079706)">
+		<g id="g38" transform="matrix(0,-0.70504127,0.70504127,0,129.48706,85.720049)">
+			<path id="rect4760-8" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccccc" fill="none" d="M29.956-70.292l3.213-1.25
+				l3.211,1.25v47.687l-3.211,0.893l-3.213-0.893V-70.292z"/>
+			
+				<path id="path4535" inkscape:connector-curvature="0" fill="none" stroke="#FFFFFF" stroke-width="1.9466" stroke-linejoin="round" d="
+				M43.278-58.795l-0.003,29.982l-5.615-0.001l0.003-29.982L43.278-58.795z"/>
+			
+				<path id="path4293" inkscape:connector-curvature="0" sodipodi:nodetypes="cccc" fill="none" stroke="#FFFFFF" stroke-width="2.9569" stroke-linecap="round" stroke-linejoin="round" d="
+				M49.024-58.335l15.042,14.531l-15.087,14.53v-29.061"/>
+		</g>
+		<path id="path22" inkscape:connector-curvature="0" fill="#FFFFFF" d="M90.544,50.295c0.798-0.854,8.211-8.504,8.239-8.504
+			c0.036,0,8.334,8.594,8.441,8.742c0.066,0.092-0.094,0.093-8.461,0.093h-8.529L90.544,50.295z"/>
+		<path id="path35" inkscape:connector-curvature="0" fill="#FFFFFF" d="M88.614,57.148v-2.13h10.395h10.396v2.13v2.13H99.009
+			H88.614V57.148z"/>
+	</g>
+</g>
+</svg>

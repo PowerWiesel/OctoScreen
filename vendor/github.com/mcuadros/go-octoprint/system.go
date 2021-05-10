@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-var ExecuteErrors = statusMapping{
+var ExecuteErrors = StatusMapping{
 	404: "The command could not be found for source and action",
 	500: "The command didn’t define a command to execute, the command returned a non-zero return code and ignore was not true or some other internal server error occurred",
 }
@@ -46,6 +46,7 @@ func (cmd *SystemCommandsRequest) Do(c *Client) (*SystemCommandsResponse, error)
 type SystemExecuteCommandRequest struct {
 	// Source for which to list commands.
 	Source CommandSource `json:"source"`
+
 	// Action is the identifier of the command, action from its definition.
 	Action string `json:"action"`
 }

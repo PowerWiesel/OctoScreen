@@ -1,162 +1,375 @@
-
-
-/* * {
-    
-} */
-
 window {
-    background-color: #13181C;
-    -gtk-icon-shadow: none;
-    font-size: 20px;
+	background-color: #13181C;
+	-gtk-icon-shadow: none;
+	font-size: 20px;
 }
 
 scrollbar, scrollbar button {
-    border: none;
-    background-color: #13181C;
+	border: none;
+	background-color: #13181C;
 }
 
 scrollbar slider {
-    min-width: 88px;
-    border-radius: 15px;
-    background-color: #404E57;
+	min-width: 88px;
+	border-radius: 15px;
+	background-color: #404E57;
 }
 
 progress, trough {
-    min-height: 40px;
+	min-height: 20px;
+	font-size: 50px;
 }
 
 progress {
-    background-color: #00C9B4;
+	background-color: #00C9B4;
+	font-size: 50px;
+	font-weight: lighter;
 }
 
+.printing-progress-bar{
+	font-size: 60px;
+	color: #00C9B4;
+}
+
+.printing-state {
+	opacity: 0.5;
+}
+
+
+/* File browser *********************************************************** */
+.list-item-nth-child-even {
+	background-color: #34383C;
+}
+
+.labels-box {
+	margin-top: 10px;
+}
+
+.preview-image-list-item {
+	margin-bottom: 15px;
+}
+
+
+.list-box-row {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+.list-item-button {
+	margin: 0;
+	border: 0;
+	padding: 0 0 0 6px;
+}
+
+
+
+
+/* Button styles *********************************************************** */
 button {
-    background-image: none;
-    background-color:#13181C;
-    margin:5px;
-    margin-bottom:10px;
-    border-radius:0;
-    border:0;
-    -gtk-icon-shadow: none;
+	background-image: none;
+	background-color: #13181C;
+	margin: 5px;
+	margin-bottom: 10px;
+	border-radius: 0;
+	border: 0;
+	-gtk-icon-shadow: none;
 }
 
 button:active {
-    background-color: #304C62;
+	background-color: #304C62;
 }
 
 
-button.color1 {
-    border-bottom: 8px solid #ED6500;
+button.color-none {
+	border-bottom: 8px solid black;
 }
 
-button.color2 {
-    border-bottom: 8px solid #B10080;
+.color1 {
+	border-bottom: 8px solid #ED6500;
 }
 
-button.color3 {
-    border-bottom: 8px solid #009384;
+.color2 {
+	border-bottom: 8px solid #B10080;
 }
 
-button.color4 {
-    border-bottom: 8px solid #A7E100;
+.color3 {
+	border-bottom: 8px solid #009384;
 }
+
+.color4 {
+	border-bottom: 8px solid #A7E100;
+}
+
+.color-dash-1 {
+	background-image: linear-gradient(to right, #560FD1 60%, rgba(255, 255, 255, 0) 20%);
+
+	background-position: bottom;
+	background-size: 70px 8px;
+	background-repeat: repeat-x;
+}
+
+.color-dash-2 {
+	background-image: linear-gradient(to right, #C8ADF8 60%, rgba(255, 255, 255, 0) 20%);
+
+	background-position: bottom;
+	background-size: 70px 8px;
+	background-repeat: repeat-x;
+}
+
+.color-warning-sign-yellow {
+	border-bottom: 8px solid #FFE700;
+}
+
+.color-warning-sign-yellow-dark {
+	border-bottom: 8px solid #E6D300;
+}
+
+
+
 
 button.active {
-    background-color: #20303D;
+	background-color: #20303D;
 }
 
-button.file-list {
-    margin: 0px;
-}
+
 
 entry {
-    font-size: 30px;
-    background-color: #20292F;
-    border-radius:0;
-    padding-left: 1em;
-    margin-left: 1em;
-    padding-right: 1em;
+	font-size: 30px;
+	background-color: #20292F;
+	border-radius: 0;
+	padding-left: 1em;
+	margin-left: 1em;
+	padding-right: 1em;
 }
 
 button.keyboard {
-    font-size: 30px;
-    margin:0px;
-    /* margin-bottom:10px; */
-
+	font-size: 30px;
+	margin: 2px;
+	background-color: #538fbe;
+	border: 5px outset #2d6898;
 }
 
-.dialog { 
-    border: 2px solid black; 
-    font-size: 20px;
-    padding: 50px;
-    background-color: #000;
-}
-
-.dialog button {
-    padding: 30px 50px 30px 50px;
-    border-bottom: 8px solid #009384;
-}
-
-
-.dialog { 
-    border: 2px solid black; 
-    font-size: 20px;
-    padding: 50px;
-    background-color: #000;
+.dialog {
+	border: 4px solid white;
+	font-size: 20px;
+	padding: 50px;
+	background-color: #333;
 }
 
 .dialog button {
-    padding: 30px 50px 30px 50px;
-    border-bottom: 8px solid #009384;
+	padding: 30px 50px 30px 50px;
+	border-bottom: 8px solid #009384;
 }
 
+/* For the Cancel/No button */
+.dialog button:nth-child(1) {
+	border-bottom-color: #D22E40;
+}
 
-.message { 
-    border: 2px solid #981E1F; 
-    font-size: 20px;
-    padding: 50px;
-    color: #FFF;
-    background-color: #981E1F;
+/* For the OK/Yes button */
+.dialog button:nth-child(2) {
+	border-bottom-color: #3BB22C;
+}
+
+.message {
+	border: 2px solid #981E1F;
+	font-size: 20px;
+	padding: 50px;
+	color: #FFF;
+	background-color: #981E1F;
 }
 
 .message button {
-    background-color: #FFF;
-    color: #000;
-    padding: 40px 50px 40px 50px;
+	background-color: #FFF;
+	color: #000;
+	padding: 40px 50px 40px 50px;
 }
 
-
 .notification {
-    background-clip: padding-box;
-    padding: 5px;
-    border-radius: 0 0 5px 5px;
-    opacity: 0.8;
+	background-clip: padding-box;
+	padding: 5px;
+	border-radius: 0 0 5px 5px;
+	opacity: 0.8;
 }
 
 .warning {
-    background-color:rgba(30, 204, 39, 0.7);
+	background-color: rgba(30, 204, 39, 0.7);
 }
 
 .error {
-    background-color:rgba(204, 30, 30, 0.7);
+	background-color: rgba(204, 30, 30, 0.7);
 }
 
-/* GtkWindow {
-    background-color: green;
-    border-width: 3px;
-    border-color: blue;
-} */
+.printing-status-label {
+	padding-top: 5px;
+	padding-bottom: 3px;
 
-/* GtkButton {
-    background-image: none;
-    background-color:#1010FF;
-    margin:2px;
-    border-radius:0;
-} */
+	font-size: 24px;
+}
 
-/* button, entry {
-    color: #ff00ea;
-    font: 12px "Comic Sans";
-    background-color: #1010FF;
-  } */
+.hidden {
+	opacity: 0;
+}
 
 
+
+
+/* Margin styles *********************************************************** */
+.no-margin {
+	margin: 0;
+}
+
+.margin-top-5 {
+	margin-top: 5px;
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+.margin-top-20 {
+	margin-top: 20px;
+}
+
+.margin-right-20 {
+	margin-right: 20px;
+}
+
+.margin-bottom-1 {
+	margin-right: 1px;
+}
+
+.margin-bottom-2 {
+	margin-right: 2px;
+}
+
+.margin-bottom-3 {
+	margin-right: 3px;
+}
+
+.margin-bottom-4 {
+	margin-right: 4px;
+}
+
+.margin-bottom-10 {
+	margin-right: 10px;
+}
+
+.margin-bottom-20 {
+	margin-right: 20px;
+}
+
+
+.margin-left-20 {
+	margin-left: 20px;
+}
+
+
+
+
+/* Border styles *********************************************************** */
+.no-border {
+	border: 0;
+}
+
+
+
+/* Padding styles ********************************************************** */
+.no-padding {
+	padding: 0;
+}
+
+.padding-left-20 {
+	padding-left: 20px;
+}
+
+.padding-right-20 {
+	padding-right: 20px;
+}
+
+.padding-bottom-20 {
+	padding-right: 20px;
+}
+
+
+
+
+/* Font styles  ************************************************************ */
+.font-size-10 {
+	font-size: 10px;
+}
+
+.font-size-15 {
+	font-size: 15px;
+}
+
+.font-size-16 {
+	font-size: 16px;
+}
+
+.font-size-17 {
+	font-size: 17px;
+}
+
+.font-size-18 {
+	font-size: 18px;
+}
+
+.font-size-19 {
+	font-size: 19px;
+}
+
+.font-size-20 {
+	font-size: 20px;
+}
+
+.font-size-21 {
+	font-size: 21px;
+}
+
+.font-size-30 {
+	font-size: 30px;
+}
+
+
+
+
+
+
+/*
+These solid background colors are only meant to aid in testing.
+Do not use any of these in production.
+*/
+.red-background {
+	background-color: red;
+}
+
+.green-background {
+	background-color: green;
+}
+
+.blue-background {
+	background-color: blue;
+}
+
+.yellow-background {
+	background-color: yellow;
+}
+
+.orange-background {
+	background-color: orange;
+}
+
+.purple-background {
+	background-color: purple;
+}
+
+.cyan-background {
+	background-color: cyan;
+}
+
+
+.red-foreground {
+	color: red
+}
